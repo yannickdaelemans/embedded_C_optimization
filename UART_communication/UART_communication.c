@@ -12,8 +12,8 @@ int init_communication(void)
   //WDTCTL = WDTPW | WDTHOLD;                 // Stop Watchdog
 
   // Configure GPIO
-  P3SEL0 |= BIT4 + BIT5;                    // eUSCI_A1 UART
-  P3SEL1 &= ~(BIT4 + BIT5);                 // eUSCI_A1 UART
+  P3SEL0 |= BIT4 + BIT5;                    // eUSCI_A1 UART1
+  P3SEL1 &= ~(BIT4 + BIT5);                 // eUSCI_A1 UART1
 
   // Disable the GPIO power-on default high-impedance mode to activate
   // previously configured port settings
@@ -67,9 +67,9 @@ void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
   {
     case USCI_NONE: break;
     case USCI_UART_UCRXIFG:
-      while(!(UCA1IFG&UCTXIFG));
+      /*while(!(UCA1IFG&UCTXIFG));
       UCA1TXBUF = 0x55;
-      __no_operation();
+      __no_operation();*/
       break;
     case USCI_UART_UCTXIFG: break;
     case USCI_UART_UCSTTIFG: break;
