@@ -20,9 +20,14 @@ int init_communication(void)
       // previously configured port settings
       PM5CTL0 &= ~LOCKLPM5;
 
+      // Configure one FRAM waitstate as required by the device datasheet for MCLK
+      // operation beyond 8MHz _before_ configuring the clock system.
+      FRCTL0 = FRCTLPW | NWAITS_1;
+
       // XT1 Setup
       CSCTL0_H = CSKEY >> 8; // Unlock CS registers
-      CSCTL2 = SELA__LFXTCLK | SELS__DCOCLK | SELM__DCOCLK;
+      CSCTL1 = DCOFSEL_4 | DCORSEL;             // Set DCO to 16MHz
+      CSCTL2 = SELA__LFXTCLK | SELS__DCOCLK | SELM__DCOCLK;     //ACLK with LFXTCLK, SLCK with DCO, MCLK with DCO
       CSCTL3 = DIVA__1 | DIVS__1 | DIVM__1; // Set all dividers
       CSCTL4 &= ~LFXTOFF;
       do
