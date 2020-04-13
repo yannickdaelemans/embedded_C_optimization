@@ -20,7 +20,4 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "UART_communication\UART_communication.d" 
 
-C_SRCS__QUOTED += \
-"../UART_communication/UART_communication.c" 
-
 

@@ -12,7 +12,12 @@
 #ifndef UART_COMMUNICATION_UART_COMMUNICATION_H_
 #define UART_COMMUNICATION_UART_COMMUNICATION_H_
 
-int init_communication(void);
+//initialisations
+void init_GPIO(void);
+void init_clocks(void);
+void init_communication(void);
+
+//methods
 void send_data(uint16_t data);
 
 
