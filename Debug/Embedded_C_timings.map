@@ -2,10 +2,6 @@ Archive member included to satisfy reference by file (symbol)
 
 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
                               c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large/crt0.o (__crt0_call_main)
-c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
-                              ./main.o (__crt0_call_exit)
-c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
-                              c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o) (_exit)
 
 Discarded input sections
 
@@ -17,18 +13,11 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtbegin_no_eh.o
  .data          0x0000000000000000        0x0 ./main.o
  .bss           0x0000000000000000        0x0 ./main.o
- .text          0x0000000000000000       0xca ./UART_communication/UART_communication.o
  .data          0x0000000000000000        0x0 ./UART_communication/UART_communication.o
  .bss           0x0000000000000000        0x0 ./UART_communication/UART_communication.o
  .text          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
  .data          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
  .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
- .text          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
- .data          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
- .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
- .text          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
- .data          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
- .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
  .text          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
  .data          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
  .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
@@ -475,7 +464,7 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004406                . = ALIGN (0x2)
  *(.lower.text.* .lower.text)
 
-.text           0x0000000000004406       0x56
+.text           0x0000000000004406      0x112
                 0x0000000000004406                PROVIDE (_start, .)
                 0x0000000000004406                . = ALIGN (0x2)
  *(SORT(.crt_*))
@@ -485,27 +474,26 @@ __reset_vector  0x000000000000fffe        0x2
  .crt_0800call_main
                 0x000000000000440a        0x6 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
                 0x000000000000440a                __crt0_call_main
- .crt_0900call_exit
-                0x0000000000004410        0x4 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
-                0x0000000000004410                __crt0_call_exit
-                0x0000000000004414                . = ALIGN (0x2)
+                0x0000000000004410                . = ALIGN (0x2)
  *(.lowtext)
- .lowtext       0x0000000000004414       0x20 ./UART_communication/UART_communication.o
-                0x0000000000004414                USCI_A1_ISR
-                0x0000000000004434                . = ALIGN (0x2)
+ .lowtext       0x0000000000004410       0x20 ./UART_communication/UART_communication.o
+                0x0000000000004410                USCI_A1_ISR
+                0x0000000000004430                . = ALIGN (0x2)
  *(.text .stub .text.* .gnu.linkonce.t.* .text:*)
- .text          0x0000000000004434       0x24 ./main.o
-                0x0000000000004434                main
- .text.exit     0x0000000000004458        0x4 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
-                0x0000000000004458                _exit
-                0x0000000000004458                exit
+ .text          0x0000000000004430       0x1e ./main.o
+                0x0000000000004430                main
+ .text          0x000000000000444e       0xca ./UART_communication/UART_communication.o
+                0x000000000000444e                init_GPIO
+                0x0000000000004466                init_clocks
+                0x000000000000449e                init_communication
+                0x0000000000004502                send_data
  *(.text.*personality*)
  *(.gnu.warning)
  *(.interp .hash .dynsym .dynstr .gnu.version*)
                 [!provide]                        PROVIDE (__etext, .)
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
-                0x000000000000445c                . = ALIGN (0x2)
+                0x0000000000004518                . = ALIGN (0x2)
  *(.init)
  *(.fini)
  *(.tm_clone_table)
@@ -536,11 +524,7 @@ __reset_vector  0x000000000000fffe        0x2
  .MSP430.attributes
                 0x0000000000000098       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
  .MSP430.attributes
-                0x00000000000000be       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_callexit.o)
- .MSP430.attributes
-                0x00000000000000e4       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
- .MSP430.attributes
-                0x000000000000010a       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
+                0x00000000000000be       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
  *(.gnu.attributes)
  *(__TI_build_attributes)
 
@@ -568,7 +552,6 @@ __reset_vector  0x000000000000fffe        0x2
                                          0x3a (size before relaxing)
  .comment       0x0000000000000039       0x3a ./main.o
  .comment       0x0000000000000039       0x3a ./UART_communication/UART_communication.o
- .comment       0x0000000000000039       0x3a c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
  .comment       0x0000000000000039       0x3a c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
 
 .debug
@@ -583,54 +566,42 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x68
+.debug_aranges  0x0000000000000000       0x48
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x20 ./main.o
  .debug_aranges
                 0x0000000000000020       0x28 ./UART_communication/UART_communication.o
- .debug_aranges
-                0x0000000000000048       0x20 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0xaaf9
+.debug_info     0x0000000000000000     0xb395
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000     0x509e ./main.o
- .debug_info    0x000000000000509e     0x5a0c ./UART_communication/UART_communication.o
- .debug_info    0x000000000000aaaa       0x4f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_info    0x0000000000000000     0x5989 ./main.o
+ .debug_info    0x0000000000005989     0x5a0c ./UART_communication/UART_communication.o
 
-.debug_abbrev   0x0000000000000000      0x2aa
+.debug_abbrev   0x0000000000000000      0x379
  *(.debug_abbrev)
- .debug_abbrev  0x0000000000000000       0x83 ./main.o
- .debug_abbrev  0x0000000000000083      0x1d8 ./UART_communication/UART_communication.o
- .debug_abbrev  0x000000000000025b       0x4f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_abbrev  0x0000000000000000      0x1a1 ./main.o
+ .debug_abbrev  0x00000000000001a1      0x1d8 ./UART_communication/UART_communication.o
 
-.debug_line     0x0000000000000000      0x67a
+.debug_line     0x0000000000000000      0x697
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x0000000000000000       0xf7 ./main.o
- .debug_line    0x00000000000000f7      0x50e ./UART_communication/UART_communication.o
- .debug_line    0x0000000000000605       0x4d c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
- .debug_line.text.exit
-                0x0000000000000652       0x28 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
- .debug_line_end
-                0x000000000000067a        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_line    0x0000000000000000      0x189 ./main.o
+ .debug_line    0x0000000000000189      0x50e ./UART_communication/UART_communication.o
 
-.debug_frame    0x0000000000000000       0xb8
+.debug_frame    0x0000000000000000       0x94
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x24 ./main.o
  .debug_frame   0x0000000000000024       0x70 ./UART_communication/UART_communication.o
- .debug_frame   0x0000000000000094       0x24 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
-.debug_str      0x0000000000000000     0x3bd2
+.debug_str      0x0000000000000000     0x3b43
  *(.debug_str)
- .debug_str     0x0000000000000000     0x35b3 ./main.o
-                                       0x35d2 (size before relaxing)
- .debug_str     0x00000000000035b3      0x590 ./UART_communication/UART_communication.o
+ .debug_str     0x0000000000000000     0x39f0 ./main.o
+                                       0x3a5f (size before relaxing)
+ .debug_str     0x00000000000039f0      0x153 ./UART_communication/UART_communication.o
                                        0x3ad3 (size before relaxing)
- .debug_str     0x0000000000003b43       0x8f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
-                                         0x94 (size before relaxing)
 
 .debug_loc      0x0000000000000000       0x13
  *(.debug_loc)
@@ -654,10 +625,9 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x28
+.debug_ranges   0x0000000000000000       0x18
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0x18 ./UART_communication/UART_communication.o
- .debug_ranges  0x0000000000000018       0x10 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
 .debug_macro
  *(.debug_macro)
