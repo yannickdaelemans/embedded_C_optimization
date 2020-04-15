@@ -59,16 +59,17 @@ void init_communication(void)
    // UCBRSx value = 0x53 (See UG)
    UCA1BR1 = 0;
    UCA1CTL1 &= ~UCSWRST;                     // Initialize eUSCI
-   UCA1IE |= UCRXIE;                         // Enable USCI_A0 RX interrupt
+   UCA1IE |= UCRXIE;                         // Enable USCI_A1 RX interrupt
 
-   __bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled --> writing to status register
+   __bis_SR_register(GIE);       // Enter LPM3, interrupts enabled --> writing to status register
    __no_operation();
 }
 
-void send_data(uint16_t data, unsigned int nr_of_bytes){
+void send_data(uint8_t data, unsigned int nr_of_bytes){
     while (nr_of_bytes){
         while(!(UCA1IFG&UCTXIFG)){
-              UCA1TXBUF = 0x55;                 // can only send through a single byte
+            int trash = UCA1RXBUF;
+              UCA1TXBUF = data;                 // can only send through a single byte
               nr_of_bytes--;
         }
     }
@@ -77,6 +78,7 @@ void send_data(uint16_t data, unsigned int nr_of_bytes){
 void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length){
     while (data_bytes_length){
         while(!(UCA1IFG&UCTXIFG)){
+              int trash = UCA1RXBUF;
               UCA1TXBUF = *data_pointer;                 // can only send through a single byte
               data_bytes_length--;
               data_pointer++;
@@ -105,4 +107,5 @@ void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
     case USCI_UART_UCSTTIFG: break;
     case USCI_UART_UCTXCPTIFG: break;
   }
+  UCA1IFG &= ~UCRXIFG;
 }

@@ -14,10 +14,11 @@ int main(void)
 	init_communication();
 
 	// For debugging purposes
-	int num = 0x5500;
+	uint8_t num = 0x54;
 	unsigned char *ptr = &num;
 	while(1){
-	    send_data_pointer(ptr, 2);
+	    send_data(num, 2);
+	    num++;
 	}
 
 	return 0;
