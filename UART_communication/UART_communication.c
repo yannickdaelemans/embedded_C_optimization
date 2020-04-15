@@ -22,46 +22,35 @@ void init_GPIO(void){
 
 void init_clocks (void){
 
-
     // Configure one FRAM waitstate as required by the device datasheet for MCLK
     // operation beyond 8MHz _before_ configuring the clock system.
     FRCTL0 = FRCTLPW | NWAITS_1;
 
-    // XT1 Setup
-    CSCTL0_H = CSKEY >> 8;                                // Unlock CS registers
-    CSCTL1 = DCOFSEL_4 | DCORSEL;                         // Set DCO to 16MHz
-    CSCTL2 = SELA__LFXTCLK | SELS__DCOCLK | SELM__DCOCLK; //ACLK with LFXTCLK, SLCK with DCO, MCLK with DCO
-    CSCTL3 = DIVA__1 | DIVS__1 | DIVM__1;                 // Set all dividers
+    // Clock System Setup
+    CSCTL0_H = CSKEY_H;                     // Unlock CS registers
+    CSCTL1 = DCOFSEL_0;                     // Set DCO to 1MHz
+    // Set SMCLK = MCLK = DCO, ACLK = LFXTCLK (VLOCLK if unavailable)
+    CSCTL2 = SELA__LFXTCLK | SELS__DCOCLK | SELM__DCOCLK;
+    // Per Device Errata set divider to 4 before changing frequency to
+    // prevent out of spec operation from overshoot transient
+    CSCTL3 = DIVA__4 | DIVS__4 | DIVM__4;   // Set all corresponding clk sources to divide by 4 for errata
+    CSCTL1 = DCOFSEL_4 | DCORSEL;           // Set DCO to 16MHz
+    // Delay by ~10us to let DCO settle. 60 cycles = 20 cycles buffer + (10us / (1/4MHz))
+    __delay_cycles(60);
+    CSCTL3 = DIVA__1 | DIVS__1 | DIVM__1;   // Set all dividers to 1 for 16MHz operation
+
     CSCTL4 &= ~LFXTOFF;
     do
     {
-       CSCTL5 &= ~LFXTOFFG;                      // Clear XT1 fault flag
-       SFRIFG1 &= ~OFIFG;
+    CSCTL5 &= ~LFXTOFFG;                      // Clear XT1 fault flag
+    SFRIFG1 &= ~OFIFG;
     }while (SFRIFG1&OFIFG);                   // Test oscillator fault flag
-    CSCTL0_H = 0;                             // Lock CS registers
+
+    CSCTL0_H = 0;                             // Lock CS registerss
 }
 
 void init_communication(void)
 {
-
-
-   // Configure one FRAM waitstate as required by the device datasheet for MCLK
-   // operation beyond 8MHz _before_ configuring the clock system.
-   FRCTL0 = FRCTLPW | NWAITS_1;
-
-   // XT1 Setup
-   CSCTL0_H = CSKEY >> 8;                                // Unlock CS registers
-   CSCTL1 = DCOFSEL_4 | DCORSEL;                         // Set DCO to 16MHz
-   CSCTL2 = SELA__LFXTCLK | SELS__DCOCLK | SELM__DCOCLK; //ACLK with LFXTCLK, SLCK with DCO, MCLK with DCO
-   CSCTL3 = DIVA__1 | DIVS__1 | DIVM__1;                 // Set all dividers
-   CSCTL4 &= ~LFXTOFF;
-   do
-   {
-      CSCTL5 &= ~LFXTOFFG;                      // Clear XT1 fault flag
-      SFRIFG1 &= ~OFIFG;
-   }while (SFRIFG1&OFIFG);                   // Test oscillator fault flag
-   CSCTL0_H = 0;                             // Lock CS registers
-
    // Configure USCI_A1 for UART mode
    UCA1CTLW0 = UCSWRST;                      // Put eUSCI in reset
    UCA1CTLW0 |= UCSSEL__ACLK;                // CLK = ACLK
@@ -72,16 +61,25 @@ void init_communication(void)
    UCA1CTL1 &= ~UCSWRST;                     // Initialize eUSCI
    UCA1IE |= UCRXIE;                         // Enable USCI_A0 RX interrupt
 
-   __bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled
+   __bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled --> writing to status register
    __no_operation();
 }
 
-void send_data(uint16_t data){
-    int i = 0;
-    while (i != 1){
+void send_data(uint16_t data, unsigned int nr_of_bytes){
+    while (nr_of_bytes){
         while(!(UCA1IFG&UCTXIFG)){
               UCA1TXBUF = 0x55;                 // can only send through a single byte
-              i = 1;
+              nr_of_bytes--;
+        }
+    }
+}
+
+void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length){
+    while (data_bytes_length){
+        while(!(UCA1IFG&UCTXIFG)){
+              UCA1TXBUF = *data_pointer;                 // can only send through a single byte
+              data_bytes_length--;
+              data_pointer++;
         }
     }
 }

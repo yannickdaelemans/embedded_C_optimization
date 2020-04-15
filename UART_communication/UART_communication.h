@@ -18,7 +18,8 @@ void init_clocks(void);
 void init_communication(void);
 
 //methods
-void send_data(uint16_t data);
+void send_data(uint16_t data, unsigned int nr_of_bytes);
+void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length);
 
 
 #endif /* UART_COMMUNICATION_UART_COMMUNICATION_H_ */

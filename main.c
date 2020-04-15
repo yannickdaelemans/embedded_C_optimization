@@ -14,8 +14,10 @@ int main(void)
 	init_communication();
 
 	// For debugging purposes
+	int num = 0x5500;
+	unsigned char *ptr = &num;
 	while(1){
-	    send_data(0x00FF);
+	    send_data_pointer(ptr, 2);
 	}
 
 	return 0;
