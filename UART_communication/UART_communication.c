@@ -65,14 +65,19 @@ void init_communication(void)
    __no_operation();
 }
 
-void send_data(uint8_t data, unsigned int nr_of_bytes){
-    while (nr_of_bytes){
+void init_timer(void){
+    TA0CTL = TASSEL__SMCLK | MC__CONTINOUS;   // SMCLK, continuous mode
+}
+
+void send_data(char data, unsigned int nr_of_bytes){
+    /*while (nr_of_bytes){
         while(!(UCA1IFG&UCTXIFG)){
             int trash = UCA1RXBUF;
               UCA1TXBUF = data;                 // can only send through a single byte
               nr_of_bytes--;
         }
-    }
+    }*/
+    UCA1TXBUF = data;
 }
 
 void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length){

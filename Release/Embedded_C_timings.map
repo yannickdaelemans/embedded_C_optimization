@@ -464,7 +464,7 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004406                . = ALIGN (0x2)
  *(.lower.text.* .lower.text)
 
-.text           0x0000000000004406      0x15c
+.text           0x0000000000004406      0x146
                 0x0000000000004406                PROVIDE (_start, .)
                 0x0000000000004406                . = ALIGN (0x2)
  *(SORT(.crt_*))
@@ -476,26 +476,26 @@ __reset_vector  0x000000000000fffe        0x2
                 0x000000000000440a                __crt0_call_main
                 0x0000000000004410                . = ALIGN (0x2)
  *(.lowtext)
- .lowtext       0x0000000000004410       0x28 ./UART_communication/UART_communication.o
+ .lowtext       0x0000000000004410       0x20 ./UART_communication/UART_communication.o
                 0x0000000000004410                USCI_A1_ISR
-                0x0000000000004438                . = ALIGN (0x2)
+                0x0000000000004430                . = ALIGN (0x2)
  *(.text .stub .text.* .gnu.linkonce.t.* .text:*)
- .text          0x0000000000004438       0x50 ./main.o
-                0x0000000000004438                main
- .text          0x0000000000004488       0xda ./UART_communication/UART_communication.o
-                0x0000000000004488                init_GPIO
-                0x00000000000044a0                init_clocks
-                0x00000000000044f0                init_communication
-                0x000000000000451c                init_timer
-                0x0000000000004524                send_data
-                0x000000000000452e                send_data_pointer
+ .text          0x0000000000004430       0x4a ./main.o
+                0x0000000000004430                main
+ .text          0x000000000000447a       0xd2 ./UART_communication/UART_communication.o
+                0x000000000000447a                init_GPIO
+                0x0000000000004492                init_clocks
+                0x00000000000044e2                init_communication
+                0x000000000000450e                init_timer
+                0x0000000000004516                send_data
+                0x0000000000004520                send_data_pointer
  *(.text.*personality*)
  *(.gnu.warning)
  *(.interp .hash .dynsym .dynstr .gnu.version*)
                 [!provide]                        PROVIDE (__etext, .)
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
-                0x0000000000004562                . = ALIGN (0x2)
+                0x000000000000454c                . = ALIGN (0x2)
  *(.init)
  *(.fini)
  *(.tm_clone_table)
@@ -568,47 +568,29 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x48
+.debug_aranges
  *(.debug_aranges)
- .debug_aranges
-                0x0000000000000000       0x20 ./main.o
- .debug_aranges
-                0x0000000000000020       0x28 ./UART_communication/UART_communication.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0xb40e
+.debug_info
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000     0x59b5 ./main.o
- .debug_info    0x00000000000059b5     0x5a59 ./UART_communication/UART_communication.o
 
-.debug_abbrev   0x0000000000000000      0x3c4
+.debug_abbrev
  *(.debug_abbrev)
- .debug_abbrev  0x0000000000000000      0x1d2 ./main.o
- .debug_abbrev  0x00000000000001d2      0x1f2 ./UART_communication/UART_communication.o
 
-.debug_line     0x0000000000000000      0x691
+.debug_line
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x0000000000000000      0x1fa ./main.o
- .debug_line    0x00000000000001fa      0x497 ./UART_communication/UART_communication.o
 
-.debug_frame    0x0000000000000000       0xc4
+.debug_frame
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x34 ./main.o
- .debug_frame   0x0000000000000034       0x90 ./UART_communication/UART_communication.o
 
-.debug_str      0x0000000000000000     0x3b79
+.debug_str
  *(.debug_str)
- .debug_str     0x0000000000000000     0x39f0 ./main.o
-                                       0x3a65 (size before relaxing)
- .debug_str     0x00000000000039f0      0x189 ./UART_communication/UART_communication.o
-                                       0x3b0d (size before relaxing)
 
-.debug_loc      0x0000000000000000       0x70
+.debug_loc
  *(.debug_loc)
- .debug_loc     0x0000000000000000       0x1e ./main.o
- .debug_loc     0x000000000000001e       0x52 ./UART_communication/UART_communication.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -628,9 +610,8 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x18
+.debug_ranges
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x18 ./UART_communication/UART_communication.o
 
 .debug_macro
  *(.debug_macro)
