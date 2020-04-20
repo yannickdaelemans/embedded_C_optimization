@@ -12,6 +12,8 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./main.o" \
 "./UART_communication/UART_communication.o" \
+"./init/init.o" \
+"./timing/timing.o" \
 -T"../msp430fr6989.ld" \
 $(GEN_CMDS__FLAG) \
 -Wl,--start-group \
@@ -28,8 +30,12 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include UART_communication/subdir_vars.mk
+-include init/subdir_vars.mk
+-include timing/subdir_vars.mk
 -include subdir_rules.mk
 -include UART_communication/subdir_rules.mk
+-include init/subdir_rules.mk
+-include timing/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -160,8 +166,8 @@ Embedded_C_timings.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.o" "UART_communication\UART_communication.o" 
-	-$(RM) "main.d" "UART_communication\UART_communication.d" 
+	-$(RM) "main.o" "UART_communication\UART_communication.o" "init\init.o" "timing\timing.o" 
+	-$(RM) "main.d" "UART_communication\UART_communication.d" "init\init.d" "timing\timing.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -15,6 +15,11 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 ./main.o
  .data          0x0000000000000000        0x0 ./UART_communication/UART_communication.o
  .bss           0x0000000000000000        0x0 ./UART_communication/UART_communication.o
+ .data          0x0000000000000000        0x0 ./init/init.o
+ .bss           0x0000000000000000        0x0 ./init/init.o
+ .text          0x0000000000000000        0x0 ./timing/timing.o
+ .data          0x0000000000000000        0x0 ./timing/timing.o
+ .bss           0x0000000000000000        0x0 ./timing/timing.o
  .text          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
  .data          0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
  .bss           0x0000000000000000        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
@@ -102,6 +107,8 @@ LOAD c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/m
 LOAD c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtbegin_no_eh.o
 LOAD ./main.o
 LOAD ./UART_communication/UART_communication.o
+LOAD ./init/init.o
+LOAD ./timing/timing.o
 START GROUP
 LOAD c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large\libgcc.a
 LOAD c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libc.a
@@ -482,13 +489,14 @@ __reset_vector  0x000000000000fffe        0x2
  *(.text .stub .text.* .gnu.linkonce.t.* .text:*)
  .text          0x0000000000004430       0x4a ./main.o
                 0x0000000000004430                main
- .text          0x000000000000447a       0xd2 ./UART_communication/UART_communication.o
-                0x000000000000447a                init_GPIO
-                0x0000000000004492                init_clocks
-                0x00000000000044e2                init_communication
-                0x000000000000450e                init_timer
-                0x0000000000004516                send_data
-                0x0000000000004520                send_data_pointer
+ .text          0x000000000000447a       0x36 ./UART_communication/UART_communication.o
+                0x000000000000447a                send_data
+                0x0000000000004484                send_data_pointer
+ .text          0x00000000000044b0       0x9c ./init/init.o
+                0x00000000000044b0                init_GPIO
+                0x00000000000044c8                init_clocks
+                0x0000000000004518                init_communication
+                0x0000000000004544                init_timer
  *(.text.*personality*)
  *(.gnu.warning)
  *(.interp .hash .dynsym .dynstr .gnu.version*)
@@ -524,9 +532,13 @@ __reset_vector  0x000000000000fffe        0x2
  .MSP430.attributes
                 0x0000000000000072       0x26 ./UART_communication/UART_communication.o
  .MSP430.attributes
-                0x0000000000000098       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
+                0x0000000000000098       0x26 ./init/init.o
  .MSP430.attributes
-                0x00000000000000be       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
+                0x00000000000000be       0x26 ./timing/timing.o
+ .MSP430.attributes
+                0x00000000000000e4       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libcrt.a(crt_main.o)
+ .MSP430.attributes
+                0x000000000000010a       0x26 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
  *(.gnu.attributes)
  *(__TI_build_attributes)
 
@@ -554,6 +566,8 @@ __reset_vector  0x000000000000fffe        0x2
                                          0x3a (size before relaxing)
  .comment       0x0000000000000039       0x3a ./main.o
  .comment       0x0000000000000039       0x3a ./UART_communication/UART_communication.o
+ .comment       0x0000000000000039       0x3a ./init/init.o
+ .comment       0x0000000000000039       0x3a ./timing/timing.o
  .comment       0x0000000000000039       0x3a c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/large/crtend_no_eh.o
 
 .debug

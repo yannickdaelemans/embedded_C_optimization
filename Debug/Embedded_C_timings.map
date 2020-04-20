@@ -464,7 +464,7 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004406                . = ALIGN (0x2)
  *(.lower.text.* .lower.text)
 
-.text           0x0000000000004406      0x15c
+.text           0x0000000000004406      0x154
                 0x0000000000004406                PROVIDE (_start, .)
                 0x0000000000004406                . = ALIGN (0x2)
  *(SORT(.crt_*))
@@ -480,22 +480,22 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004410                USCI_A1_ISR
                 0x0000000000004438                . = ALIGN (0x2)
  *(.text .stub .text.* .gnu.linkonce.t.* .text:*)
- .text          0x0000000000004438       0x50 ./main.o
+ .text          0x0000000000004438       0x48 ./main.o
                 0x0000000000004438                main
- .text          0x0000000000004488       0xda ./UART_communication/UART_communication.o
-                0x0000000000004488                init_GPIO
-                0x00000000000044a0                init_clocks
-                0x00000000000044f0                init_communication
-                0x000000000000451c                init_timer
-                0x0000000000004524                send_data
-                0x000000000000452e                send_data_pointer
+ .text          0x0000000000004480       0xda ./UART_communication/UART_communication.o
+                0x0000000000004480                init_GPIO
+                0x0000000000004498                init_clocks
+                0x00000000000044e8                init_communication
+                0x0000000000004514                init_timer
+                0x000000000000451c                send_data
+                0x0000000000004526                send_data_pointer
  *(.text.*personality*)
  *(.gnu.warning)
  *(.interp .hash .dynsym .dynstr .gnu.version*)
                 [!provide]                        PROVIDE (__etext, .)
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
-                0x0000000000004562                . = ALIGN (0x2)
+                0x000000000000455a                . = ALIGN (0x2)
  *(.init)
  *(.fini)
  *(.tm_clone_table)
@@ -578,10 +578,10 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0xb40e
+.debug_info     0x0000000000000000     0xb40d
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000     0x59b5 ./main.o
- .debug_info    0x00000000000059b5     0x5a59 ./UART_communication/UART_communication.o
+ .debug_info    0x0000000000000000     0x59b4 ./main.o
+ .debug_info    0x00000000000059b4     0x5a59 ./UART_communication/UART_communication.o
 
 .debug_abbrev   0x0000000000000000      0x3c4
  *(.debug_abbrev)
@@ -593,10 +593,10 @@ __reset_vector  0x000000000000fffe        0x2
  .debug_line    0x0000000000000000      0x1fa ./main.o
  .debug_line    0x00000000000001fa      0x497 ./UART_communication/UART_communication.o
 
-.debug_frame    0x0000000000000000       0xc4
+.debug_frame    0x0000000000000000       0xc0
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x34 ./main.o
- .debug_frame   0x0000000000000034       0x90 ./UART_communication/UART_communication.o
+ .debug_frame   0x0000000000000000       0x30 ./main.o
+ .debug_frame   0x0000000000000030       0x90 ./UART_communication/UART_communication.o
 
 .debug_str      0x0000000000000000     0x3b79
  *(.debug_str)

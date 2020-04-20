@@ -1,4 +1,5 @@
 #include <msp430.h> 
+#include "init/init.h"
 #include "UART_communication/UART_communication.h"
 
 
@@ -7,7 +8,7 @@
  */
 int main(void)
 {
-    volatile unsigned int timer;
+    unsigned int timer;
 	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
 	
 	init_GPIO();
