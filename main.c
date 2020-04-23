@@ -26,27 +26,19 @@ void testing(){
     unsigned int time;
     int amount = 0;
     // For debugging purposes
-    char num = 0x54;
-    //unsigned char *ptr = &num;
-    while(amount < 8){
-        send_data(num, 2);
-        timer_begin = TA0R;
-        num++;
-        for(int i = 0; i < 60; i ++){
-            for(int i = 0; i < 20000; i ++){
-                __no_operation();
-            }
-        }
-        while(num < 0x21 || num > 0x7D){
-            num = 0x22;
-        }
-        timer_end = TA0R;
-        time = timer_end - timer_begin;
-        amount++;
-    }
-
-
+    timer_begin = TA0R;
+    for(int i = 0; i < 20000; i ++){
+        __no_operation();
+     }
+    timer_end = TA0R;
+    time = timer_end - timer_begin;
+    send_data(timer_begin);
+    send_data(timer_end);
+    send_data(time);
+    send_data(0x0000);
+    amount++;
 }
+
 
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A1_VECTOR

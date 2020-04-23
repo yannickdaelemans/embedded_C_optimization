@@ -7,7 +7,7 @@
 
 #include "UART_communication.h"
 
-void send_data(char data, unsigned int nr_of_bytes){
+void send_data(unsigned int data){
     /*while (nr_of_bytes){
         while(!(UCA1IFG&UCTXIFG)){
             int trash = UCA1RXBUF;
@@ -15,7 +15,14 @@ void send_data(char data, unsigned int nr_of_bytes){
               nr_of_bytes--;
         }
     }*/
-    UCA1TXBUF = data;
+    char c1 = data >> 8;
+    char c2 = data & 0x00ff;
+    while(!(UCA1IFG & UCTXIFG));
+    UCA1TXBUF = c2;
+    __no_operation();
+    while(!(UCA1IFG & UCTXIFG));
+    UCA1TXBUF = c1;
+    while(UCA1STATW & UCBUSY);
 }
 
 void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length){

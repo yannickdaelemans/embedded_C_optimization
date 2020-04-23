@@ -13,7 +13,7 @@
 #define UART_COMMUNICATION_UART_COMMUNICATION_H_
 
 //methods
-void send_data(char data, unsigned int nr_of_bytes);
+void send_data(unsigned int data);
 void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_length);
 
 
