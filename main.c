@@ -28,7 +28,7 @@ void testing(){
     // For debugging purposes
     char num = 0x54;
     //unsigned char *ptr = &num;
-    while(amount < 6){
+    while(amount < 8){
         send_data(num, 2);
         timer_begin = TA0R;
         num++;
@@ -62,6 +62,7 @@ void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
     case USCI_NONE: break;
     case USCI_UART_UCRXIFG:
       while(!(UCA1IFG&UCTXIFG));
+      UCA1IFG &= ~UCRXIFG;
       char read_buf = UCA1RXBUF;
       if(read_buf == '1'){
           testing();
@@ -72,5 +73,4 @@ void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
     case USCI_UART_UCSTTIFG: break;
     case USCI_UART_UCTXCPTIFG: break;
   }
-  UCA1IFG &= ~UCRXIFG;
 }

@@ -481,7 +481,7 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004406                . = ALIGN (0x2)
  *(.lower.text.* .lower.text)
 
-.text           0x0000000000004406      0x17c
+.text           0x0000000000004406      0x17a
                 0x0000000000004406                PROVIDE (_start, .)
                 0x0000000000004406                . = ALIGN (0x2)
  *(SORT(.crt_*))
@@ -500,27 +500,27 @@ __reset_vector  0x000000000000fffe        0x2
                 0x0000000000004414                USCI_A1_ISR
                 0x000000000000443c                . = ALIGN (0x2)
  *(.text .stub .text.* .gnu.linkonce.t.* .text:*)
- .text          0x000000000000443c       0x70 ./main.o
+ .text          0x000000000000443c       0x6e ./main.o
                 0x000000000000443c                main
                 0x0000000000004456                testing
- .text          0x00000000000044ac       0x36 ./UART_communication/UART_communication.o
-                0x00000000000044ac                send_data
-                0x00000000000044b6                send_data_pointer
- .text          0x00000000000044e2       0x9c ./init/init.o
-                0x00000000000044e2                init_GPIO
-                0x00000000000044fa                init_clocks
-                0x000000000000454a                init_communication
-                0x0000000000004576                init_timer
- .text.exit     0x000000000000457e        0x4 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
-                0x000000000000457e                _exit
-                0x000000000000457e                exit
+ .text          0x00000000000044aa       0x36 ./UART_communication/UART_communication.o
+                0x00000000000044aa                send_data
+                0x00000000000044b4                send_data_pointer
+ .text          0x00000000000044e0       0x9c ./init/init.o
+                0x00000000000044e0                init_GPIO
+                0x00000000000044f8                init_clocks
+                0x0000000000004548                init_communication
+                0x0000000000004574                init_timer
+ .text.exit     0x000000000000457c        0x4 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+                0x000000000000457c                _exit
+                0x000000000000457c                exit
  *(.text.*personality*)
  *(.gnu.warning)
  *(.interp .hash .dynsym .dynstr .gnu.version*)
                 [!provide]                        PROVIDE (__etext, .)
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
-                0x0000000000004582                . = ALIGN (0x2)
+                0x0000000000004580                . = ALIGN (0x2)
  *(.init)
  *(.fini)
  *(.tm_clone_table)

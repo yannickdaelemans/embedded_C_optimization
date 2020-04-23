@@ -618,12 +618,12 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000    0x10e49
+.debug_info     0x0000000000000000    0x10e45
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000     0x5a48 ./main.o
- .debug_info    0x0000000000005a48     0x59f1 ./UART_communication/UART_communication.o
- .debug_info    0x000000000000b439     0x59c1 ./init/init.o
- .debug_info    0x0000000000010dfa       0x4f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_info    0x0000000000000000     0x5a44 ./main.o
+ .debug_info    0x0000000000005a44     0x59f1 ./UART_communication/UART_communication.o
+ .debug_info    0x000000000000b435     0x59c1 ./init/init.o
+ .debug_info    0x0000000000010df6       0x4f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
 .debug_abbrev   0x0000000000000000      0x603
  *(.debug_abbrev)
@@ -632,17 +632,17 @@ __reset_vector  0x000000000000fffe        0x2
  .debug_abbrev  0x0000000000000415      0x19f ./init/init.o
  .debug_abbrev  0x00000000000005b4       0x4f c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
-.debug_line     0x0000000000000000      0x901
+.debug_line     0x0000000000000000      0x90f
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x0000000000000000      0x328 ./main.o
- .debug_line    0x0000000000000328      0x213 ./UART_communication/UART_communication.o
- .debug_line    0x000000000000053b      0x351 ./init/init.o
- .debug_line    0x000000000000088c        0x0 ./timing/timing.o
- .debug_line    0x000000000000088c       0x4d c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_line    0x0000000000000000      0x336 ./main.o
+ .debug_line    0x0000000000000336      0x213 ./UART_communication/UART_communication.o
+ .debug_line    0x0000000000000549      0x351 ./init/init.o
+ .debug_line    0x000000000000089a        0x0 ./timing/timing.o
+ .debug_line    0x000000000000089a       0x4d c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
  .debug_line.text.exit
-                0x00000000000008d9       0x28 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+                0x00000000000008e7       0x28 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
  .debug_line_end
-                0x0000000000000901        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+                0x000000000000090f        0x0 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
 .debug_frame    0x0000000000000000      0x110
  *(.debug_frame)
@@ -687,10 +687,10 @@ __reset_vector  0x000000000000fffe        0x2
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x40
+.debug_ranges   0x0000000000000000       0x58
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x30 ./main.o
- .debug_ranges  0x0000000000000030       0x10 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
+ .debug_ranges  0x0000000000000000       0x48 ./main.o
+ .debug_ranges  0x0000000000000048       0x10 c:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/../lib/gcc/msp430-elf/8.3.1/../../../../msp430-elf/lib/large\libnosys.a(exit.o)
 
 .debug_macro
  *(.debug_macro)
