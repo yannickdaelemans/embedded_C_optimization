@@ -4,7 +4,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.MSP430FR6989.ccxml.TI MSP430 USB1/MSP430" value="${build_artifact:Embedded_C_timings}"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.MSP430FR6989.ccxml.TI MSP430 USB1/MSP430" value="Embedded_C_timings"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:Embedded_C_timings}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.MSP430FR6989.ccxml.TI MSP430 USB1/MSP430" value="C:\Users\Yannick\workspace_v10\Embedded_C_timings\Release\Embedded_C_timings.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.MSP430FR6989.ccxml.TI MSP430 USB1/MSP430" value="C:\Users\Yannick\workspace_v10\Embedded_C_timings\Debug\Embedded_C_timings.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/Embedded_C_timings"/>
 </listAttribute>

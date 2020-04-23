@@ -29,26 +29,4 @@ void send_data_pointer(unsigned char *data_pointer, unsigned char data_bytes_len
     }
 }
 
-#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
-#pragma vector=USCI_A1_VECTOR
-__interrupt void USCI_A1_ISR(void)
-#elif defined(__GNUC__)
-void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
-#else
-#error Compiler not supported!
-#endif
-{
-  switch(__even_in_range(UCA1IV, USCI_UART_UCTXCPTIFG))
-  {
-    case USCI_NONE: break;
-    case USCI_UART_UCRXIFG:
-      while(!(UCA1IFG&UCTXIFG));
-      UCA1TXBUF = 0x55; // for debugging reasons
-      __no_operation();
-      break;
-    case USCI_UART_UCTXIFG: break;
-    case USCI_UART_UCSTTIFG: break;
-    case USCI_UART_UCTXCPTIFG: break;
-  }
-  UCA1IFG &= ~UCRXIFG;
-}
+
