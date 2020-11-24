@@ -21,11 +21,6 @@ void init_GPIO(void){
 }
 
 void init_clocks (void){
-
-    // Configure one FRAM waitstate as required by the device datasheet for MCLK
-    // operation beyond 8MHz _before_ configuring the clock system.
-    //FRCTL0 = FRCTLPW | NWAITS_1;
-
     // Clock System Setup
     CSCTL0_H = CSKEY >> 8;                    // Unlock CS registers
     CSCTL1 = DCOFSEL_6;                       // Set DCO to 8MHz

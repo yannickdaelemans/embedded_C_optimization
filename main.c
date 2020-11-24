@@ -44,7 +44,7 @@ int testing_clock_call_function(int* pi, int* pi2){
 
 void testing_clock(){
     unsigned int ID = 0x0000;
-    unsigned int timer_begin = TA0R;;
+    unsigned int timer_begin = TA0R;
     unsigned int timer_end;
     // start with addressing some pins
     //declare all the pins
@@ -123,7 +123,7 @@ void __attribute__ ((interrupt(USCI_A1_VECTOR))) USCI_A1_ISR (void)
       UCA1IFG &= ~UCRXIFG;
       char read_buf = UCA1RXBUF;
       if(read_buf == '1'){
-          testing_clock();;
+          testing_clock();
       }
       __no_operation();
       break;
