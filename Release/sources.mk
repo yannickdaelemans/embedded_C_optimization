@@ -113,6 +113,7 @@ PDE_DEPS__QUOTED :=
 SUBDIRS := \
 . \
 UART_communication \
+code_thesis_examples \
 init \
 timing \
 

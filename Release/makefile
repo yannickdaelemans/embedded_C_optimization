@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64
+CG_TOOL_ROOT := C:/ti/gcc
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -12,6 +12,8 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./main.o" \
 "./UART_communication/UART_communication.o" \
+"./code_thesis_examples/extra_function.o" \
+"./code_thesis_examples/thesis_example_code.o" \
 "./init/init.o" \
 "./timing/timing.o" \
 -T"../msp430fr6989.ld" \
@@ -30,10 +32,12 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include UART_communication/subdir_vars.mk
+-include code_thesis_examples/subdir_vars.mk
 -include init/subdir_vars.mk
 -include timing/subdir_vars.mk
 -include subdir_rules.mk
 -include UART_communication/subdir_rules.mk
+-include code_thesis_examples/subdir_rules.mk
 -include init/subdir_rules.mk
 -include timing/subdir_rules.mk
 -include objects.mk
@@ -152,22 +156,22 @@ all: $(OBJS) $(LD_SRCS) $(GEN_CMDS)
 Embedded_C_timings.out: $(OBJS) $(LD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: GNU Linker'
-	"C:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/msp430-elf-gcc-8.3.1.exe" -mhwmult=f5series -Os -Wall -mcode-region=none -mlarge -Wl,-Map,"Embedded_C_timings.map" -Wl,--gc-sections -L"C:/ti/ccs1000/ccs/ccs_base/msp430/include_gcc" -mmcu=msp430fr6989 -o"Embedded_C_timings.out" $(ORDERED_OBJS)
+	"C:/ti/gcc/bin/msp430-elf-gcc-6.4.0.exe" -mhwmult=f5series -O3 -Wall -mcode-region=none -mdata-region=lower -mlarge -Wl,-Map,"Embedded_C_timings.map" -Wl,--gc-sections -L"C:/ti/ccs1000/ccs/ccs_base/msp430/include_gcc" -mmcu=msp430fr6989 -o"Embedded_C_timings.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 Embedded_C_timings.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: GNU Objcopy Utility'
-	"C:/ti/ccs1000/ccs/tools/compiler/msp430-gcc-8.3.1.25_win64/bin/msp430-elf-objcopy.exe"  $(EXE_OUTPUTS__QUOTED) "Embedded_C_timings.hex"
+	"C:/ti/gcc/bin/msp430-elf-objcopy.exe"  $(EXE_OUTPUTS__QUOTED) "Embedded_C_timings.hex"
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.o" "UART_communication\UART_communication.o" "init\init.o" "timing\timing.o" 
-	-$(RM) "main.d" "UART_communication\UART_communication.d" "init\init.d" "timing\timing.d" 
+	-$(RM) "main.o" "UART_communication\UART_communication.o" "code_thesis_examples\extra_function.o" "code_thesis_examples\thesis_example_code.o" "init\init.o" "timing\timing.o" 
+	-$(RM) "main.d" "UART_communication\UART_communication.d" "code_thesis_examples\extra_function.d" "code_thesis_examples\thesis_example_code.d" "init\init.d" "timing\timing.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

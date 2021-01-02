@@ -1,1 +1,1 @@
-"./main.o" "./UART_communication/UART_communication.o" "./init/init.o" "./timing/timing.o" -T"../msp430fr6989.ld" -Wl,--start-group -lgcc -lc -Wl,--end-group 
+"./main.o" "./UART_communication/UART_communication.o" "./code_thesis_examples/extra_function.o" "./code_thesis_examples/thesis_example_code.o" "./init/init.o" "./timing/timing.o" -T"../msp430fr6989.ld" -Wl,--start-group -lgcc -lc -Wl,--end-group 
